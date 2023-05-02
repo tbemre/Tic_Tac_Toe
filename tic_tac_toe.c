@@ -29,3 +29,27 @@ void show_Game_Board(int row , int column , char array[][column]){
         printf("\n");
     }
 }
+
+int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE]){
+    int value;
+    
+    return 1;
+}
+
+void start_Game(void){
+    int user_input;
+    char board[MAX_ROW][MAX_COLUMN];
+    int board_matrix[SIZE][SIZE];
+    initialize_Game_Board(board);
+    while(update_Game_Board){
+
+    }
+}
+void Menu(void){
+    printf("WELCOME!\nThis is a Tic-Tac-Toe\nEveryone knows how to play this game but it's my game.\n");
+    char shape_of_board[MAX_SIZE] = " 1 | 2 | 3 \n-----------\n 4 | 5 | 6 \n-----------\n 7 | 8 | 9 \n";
+    printf("The first player begins with 'O'\nThen the player chooses a cell and the move passes to the other player\n");
+    printf("The cell rows are as follows:\n");
+    printf("%s",shape_of_board);
+    
+}
