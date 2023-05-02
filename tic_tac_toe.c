@@ -1,7 +1,7 @@
 #include "tic_tac_toe.h"
 #include <stdio.h>
 
-void initialize_Game_Board(int size, char arr[][MAX_COLUMN]){
+void initialize_Game_Board(char arr[][MAX_COLUMN]){
     int row = 0,column = 0;
     for(;row<MAX_ROW;row++){
         for(;column<MAX_COLUMN;column++){
