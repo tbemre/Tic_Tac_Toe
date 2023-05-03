@@ -32,13 +32,30 @@ void show_Game_Board(int row , int column , char array[][column]){
 
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn){
     int cell;
+    int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
     printf("Please select a cell:");
     scanf("%d",&cell);
     while(cell<1||cell>9){
         printf("Please enter a number between 1 and 9.");
         scanf("%d",&cell);
     }
-    printf("asd");
+    while(1){
+        int i=0;
+        int check=0;
+        for(;i<9;i++){
+            if(cell==arr_cell[i]){
+                int check=1;
+                break;
+            }
+        }
+        if(check){
+            break;
+        }
+        else{
+            printf("Enter a number that has not been selected before.");
+            scanf("%d",&cell);
+        }
+    }
     return 1;
 }
 
