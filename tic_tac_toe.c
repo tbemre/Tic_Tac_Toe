@@ -30,9 +30,10 @@ void show_Game_Board(int row , int column , char array[][column]){
     }
 }
 
-int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn){
+int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_cell[],int turn){
     int cell;
-    int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
+    char player_sing;
+    printf("Player %d turns.\n",turn+1);
     printf("Please select a cell:");
     scanf("%d",&cell);
     while(cell<1||cell>9){
@@ -44,11 +45,12 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn)
         int check=0;
         for(;i<9;i++){
             if(cell==arr_cell[i]){
-                int check=1;
+                check=1;
                 break;
             }
         }
-        if(check){
+        if(check==1){
+            arr_cell[i]=0;
             break;
         }
         else{
@@ -56,6 +58,50 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn)
             scanf("%d",&cell);
         }
     }
+    if(turn==1){player_sing='X';}
+    else{player_sing='O';}
+    switch (cell)
+    {
+    case 1:
+        arr[0][1]=player_sing;
+        board_matrix[0][0]= turn;
+        break;
+    case 2:
+        arr[0][5]=player_sing;
+        board_matrix[0][1]= turn;
+        break;
+    case 3:
+        arr[0][9]=player_sing;
+        board_matrix[0][2]= turn;
+        break;
+    case 4:
+        arr[2][1]=player_sing;
+        board_matrix[1][0]= turn;
+        break;
+    case 5:
+        arr[2][5]=player_sing;
+        board_matrix[1][1]= turn;
+        break;
+    case 6:
+        arr[2][9]=player_sing;
+        board_matrix[1][2]= turn;
+        break;
+    case 7:
+        arr[4][1]=player_sing;
+        board_matrix[2][0]= turn;
+        break;
+    case 8:
+        arr[4][5]=player_sing;
+        board_matrix[2][1]= turn;
+        break;
+    case 9:
+        arr[4][9]=player_sing;
+        board_matrix[2][2]= turn;
+        break;
+    default:
+        break;
+    }
+    
     return 1;
 }
 
@@ -63,10 +109,14 @@ void start_Game(void){
     int user_input;
     char board[MAX_ROW][MAX_COLUMN];
     int board_matrix[SIZE][SIZE];
+    int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
     initialize_Game_Board(board);
     int player_turn = 0;
-    while(update_Game_Board(board,board_matrix,player_turn%2)){
+    while(update_Game_Board(board,board_matrix,arr_cell,player_turn%2)){
         player_turn++;
+        show_Game_Board(MAX_ROW,MAX_COLUMN,board);
+        if(player_turn==4)
+            break;
     }
 }
 void Menu(void){
