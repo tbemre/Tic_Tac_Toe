@@ -34,9 +34,11 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn)
     int cell;
     printf("Please select a cell:");
     scanf("%d",&cell);
-    if(cell<1||cell>9){
-        printf(" ");
+    while(cell<1||cell>9){
+        printf("Please enter a number between 1 and 9.");
+        scanf("%d",&cell);
     }
+    printf("asd");
     return 1;
 }
 
