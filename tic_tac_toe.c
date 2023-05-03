@@ -30,21 +30,44 @@ void show_Game_Board(int row , int column , char array[][column]){
     }
 }
 int check_for_Win(int board[][SIZE],int sg){
-    if (board[0][0] == sg && board[0][1] == sg && board[0][2] == sg ||
+    int win =0;
+    for(int i=0;i<3;i++){
+        if (board[i][0] != 9) {
+            if (board[i][0] == board[i][1]) {
+                if (board[i][1] == board[i][2]) {
+                    printf("buradan\n");
+                    return 1;
+                }    
+            }
+        }
+    }
+    for(int i=0;i<3;i++){
+        if (board[i][0] != 9) {
+            if (board[0][i] == board[1][i]) {
+                if (board[1][i] == board[2][i]) {
+                    printf("dan\n");
+                    return 1;
+                }    
+            }
+        }
+    }
+    return 0;
+    /*
+    if(board[0][0] == sg && board[0][1] == sg && board[0][2] == sg ||
       board[1][0] == sg && board[1][1] == sg && board[1][2] == sg ||
       board[2][0] == sg && board[2][1] == sg && board[2][2] == sg){
         return 1;
     }
-    else if (board[0][0] == sg && board[1][0] == sg && board[2][0] == sg ||
+    else if(board[0][0] == sg && board[1][0] == sg && board[2][0] == sg ||
            board[0][1] == sg && board[1][1] == sg && board[2][1] == sg ||
            board[0][2] == sg && board[1][2] == sg && board[2][2] == sg){
         return 1;
     }
-    else if (board[0][0] == sg && board[1][1] == sg && board[2][2] == sg ||
+    else if(board[0][0] == sg && board[1][1] == sg && board[2][2] == sg ||
            board[0][2] == sg && board[1][1] == sg && board[2][0] == sg){
         return 1;
     }
-    return 0;
+    return 0;*/
 }
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_cell[],int turn){
     int cell;
@@ -70,7 +93,7 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_c
             break;
         }
         else{
-            printf("Enter a number that has not been selected before.");
+            printf("Enter a number that has not been selected before.\n");
             scanf("%d",&cell);
         }
     }
@@ -132,7 +155,7 @@ void start_Game(void){
     int player_turn = 0;
     while(player_turn<9){
         if(check_for_Win(board_matrix,player_turn%2)){
-            printf("   ### Player %d Won ###",player_turn%2+1);
+            printf("   ### Player %d Won ###\n",(player_turn%2));
             break;
         }
         update_Game_Board(board,board_matrix,arr_cell,player_turn%2);
