@@ -29,7 +29,23 @@ void show_Game_Board(int row , int column , char array[][column]){
         printf("\n");
     }
 }
-
+int check_for_Win(int board[][SIZE],int sg){
+    if (board[0][0] == sg && board[0][1] == sg && board[0][2] == sg ||
+      board[1][0] == sg && board[1][1] == sg && board[1][2] == sg ||
+      board[2][0] == sg && board[2][1] == sg && board[2][2] == sg){
+        return 1;
+    }
+    else if (board[0][0] == sg && board[1][0] == sg && board[2][0] == sg ||
+           board[0][1] == sg && board[1][1] == sg && board[2][1] == sg ||
+           board[0][2] == sg && board[1][2] == sg && board[2][2] == sg){
+        return 1;
+    }
+    else if (board[0][0] == sg && board[1][1] == sg && board[2][2] == sg ||
+           board[0][2] == sg && board[1][1] == sg && board[2][0] == sg){
+        return 1;
+    }
+    return 0;
+}
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_cell[],int turn){
     int cell;
     char player_sing;
@@ -101,7 +117,7 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_c
     default:
         break;
     }
-    
+
     return 1;
 }
 
@@ -112,12 +128,16 @@ void start_Game(void){
     int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
     initialize_Game_Board(board);
     int player_turn = 0;
-    while(update_Game_Board(board,board_matrix,arr_cell,player_turn%2)){
-        player_turn++;
-        show_Game_Board(MAX_ROW,MAX_COLUMN,board);
-        if(player_turn==4)
+    while(1){
+        if(check_for_Win(board_matrix,player_turn%2)){
+            printf("   ### Player %d Won ###",player_turn%2+1);
             break;
+        }
+        update_Game_Board(board,board_matrix,arr_cell,player_turn%2);
+        show_Game_Board(MAX_ROW,MAX_COLUMN,board);
+        player_turn++;    
     }
+
 }
 void Menu(void){
     printf("WELCOME!\nThis is a Tic-Tac-Toe\nEveryone knows how to play this game but it's my game.\n");

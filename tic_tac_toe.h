@@ -7,7 +7,7 @@
 void initialize_Game_Board(char arr[][MAX_COLUMN]);
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[SIZE][SIZE],int arr_cell[],int turn);
 void show_Game_Board(int row , int column , char array[][column]);
-int check_for_Win(void);
+int check_for_Win(int board[][SIZE],int sg);
 void start_Game(void);
 void Menu(void);
 #endif
