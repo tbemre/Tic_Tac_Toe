@@ -5,7 +5,7 @@
 #define MAX_SIZE 61
 #define SIZE 3
 void initialize_Game_Board(char arr[][MAX_COLUMN]);
-int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[SIZE][SIZE]);
+int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[SIZE][SIZE],int turn);
 void show_Game_Board(int row , int column , char array[][column]);
 int check_for_Win(void);
 void start_Game(void);

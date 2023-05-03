@@ -30,9 +30,13 @@ void show_Game_Board(int row , int column , char array[][column]){
     }
 }
 
-int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE]){
-    int value;
-    
+int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int turn){
+    int cell;
+    printf("Please select a cell:");
+    scanf("%d",&cell);
+    if(cell<1||cell>9){
+        printf(" ");
+    }
     return 1;
 }
 
@@ -41,8 +45,9 @@ void start_Game(void){
     char board[MAX_ROW][MAX_COLUMN];
     int board_matrix[SIZE][SIZE];
     initialize_Game_Board(board);
-    while(update_Game_Board){
-
+    int player_turn = 0;
+    while(update_Game_Board(board,board_matrix,player_turn%2)){
+        player_turn++;
     }
 }
 void Menu(void){
@@ -51,5 +56,8 @@ void Menu(void){
     printf("The first player begins with 'O'\nThen the player chooses a cell and the move passes to the other player\n");
     printf("The cell rows are as follows:\n");
     printf("%s",shape_of_board);
-    
+    printf("Press any button to start the game!\n");
+    char press;
+    scanf("%c",&press);
+    start_Game();
 }
