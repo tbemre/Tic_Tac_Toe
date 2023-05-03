@@ -124,11 +124,13 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_c
 void start_Game(void){
     int user_input;
     char board[MAX_ROW][MAX_COLUMN];
-    int board_matrix[SIZE][SIZE];
+    int board_matrix[SIZE][SIZE]={{9,9,9},
+                                  {9,9,9},
+                                  {9,9,9}};
     int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
     initialize_Game_Board(board);
     int player_turn = 0;
-    while(1){
+    while(player_turn<9){
         if(check_for_Win(board_matrix,player_turn%2)){
             printf("   ### Player %d Won ###",player_turn%2+1);
             break;
