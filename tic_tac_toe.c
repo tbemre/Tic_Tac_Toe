@@ -1,6 +1,8 @@
 #include "tic_tac_toe.h"
 #include <stdio.h>
-
+/*
+    ##This function create a board shape using two dimensional array 
+*/
 void initialize_Game_Board(char arr[][MAX_COLUMN]){
     int row = 0,column = 0;
     for(;row<MAX_ROW;row++){
@@ -20,7 +22,9 @@ void initialize_Game_Board(char arr[][MAX_COLUMN]){
         column=0;
     }    
 }
-
+/*
+    ##This function prints  the board
+*/
 void show_Game_Board(int row , int column , char array[][column]){
     for(int i=0;i<row;i++){
         for(int j=0;j<column;j++){
@@ -29,6 +33,9 @@ void show_Game_Board(int row , int column , char array[][column]){
         printf("\n");
     }
 }
+/*
+    ##This function checks if there is a winner   
+*/
 int check_for_Win(int board[][SIZE],int sg){
     int win =0;
     for(int i=0;i<3;i++){
@@ -63,6 +70,9 @@ int check_for_Win(int board[][SIZE],int sg){
     }
     return 0;
 }
+/*
+    ##This function takes the user move and saves it on the board.
+*/
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_cell[],int turn){
     int cell;
     char player_sing;
@@ -137,7 +147,9 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_c
 
     return 1;
 }
-
+/*
+    ##This function loops the necessary functions and starts the game.
+*/
 void start_Game(void){
     int user_input,w;
     char board[MAX_ROW][MAX_COLUMN];
@@ -164,6 +176,9 @@ void start_Game(void){
     }
 
 }
+/*
+    ##This function was written to give information about what the game is. is the start screen
+*/
 void Menu(void){
     printf("WELCOME!\nThis is a Tic-Tac-Toe\nEveryone knows how to play this game but it's my game.\n");
     char shape_of_board[MAX_SIZE] = " 1 | 2 | 3 \n-----------\n 4 | 5 | 6 \n-----------\n 7 | 8 | 9 \n";
