@@ -51,23 +51,17 @@ int check_for_Win(int board[][SIZE],int sg){
             }
         }
     }
+    if(board[0][0]==board[1][1]){
+        if(board[1][1]==board[2][2]){
+            return 1;
+        }
+    }
+    else if(board[0][2]==board[1][1]){
+        if(board[1][1]==board[2][0]){
+            return 1;
+        }
+    }
     return 0;
-    /*
-    if(board[0][0] == sg && board[0][1] == sg && board[0][2] == sg ||
-      board[1][0] == sg && board[1][1] == sg && board[1][2] == sg ||
-      board[2][0] == sg && board[2][1] == sg && board[2][2] == sg){
-        return 1;
-    }
-    else if(board[0][0] == sg && board[1][0] == sg && board[2][0] == sg ||
-           board[0][1] == sg && board[1][1] == sg && board[2][1] == sg ||
-           board[0][2] == sg && board[1][2] == sg && board[2][2] == sg){
-        return 1;
-    }
-    else if(board[0][0] == sg && board[1][1] == sg && board[2][2] == sg ||
-           board[0][2] == sg && board[1][1] == sg && board[2][0] == sg){
-        return 1;
-    }
-    return 0;*/
 }
 int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_cell[],int turn){
     int cell;
@@ -145,17 +139,23 @@ int update_Game_Board(char arr[][MAX_COLUMN], int board_matrix[][SIZE],int arr_c
 }
 
 void start_Game(void){
-    int user_input;
+    int user_input,w;
     char board[MAX_ROW][MAX_COLUMN];
-    int board_matrix[SIZE][SIZE]={{9,9,9},
-                                  {9,9,9},
-                                  {9,9,9}};
+    int board_matrix[SIZE][SIZE]={{10,11,12},
+                                  {13,14,15},
+                                  {16,17,18}};
     int arr_cell[9] = {1,2,3,4,5,6,7,8,9};
     initialize_Game_Board(board);
     int player_turn = 0;
     while(player_turn<9){
         if(check_for_Win(board_matrix,player_turn%2)){
-            printf("   ### Player %d Won ###\n",(player_turn%2));
+            if(player_turn%2 == 0){
+                w = 2;
+            }
+            else if(player_turn%2 == 1){
+                w=1;
+            }
+            printf("   ### Player %d Won ###\n",w);
             break;
         }
         update_Game_Board(board,board_matrix,arr_cell,player_turn%2);
